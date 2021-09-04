@@ -77,7 +77,8 @@ class SampleController extends Controller
     public function with_headers() {
         $base_url = 'https://slack.com/api';
         $client = new \GuzzleHttp\Client( [
-            'base_uri' => $base_url,
+            'base_uri'  => $base_url,
+            'verify'    => false,
         ] );
     
         $path = '/users.list';
@@ -94,14 +95,18 @@ class SampleController extends Controller
             'Connection'                => 'keep-alive',
             'Authorization'             => 'Bearer ' . env('SLACK_ACCESS_TOKEN', null),
         ];
-        $response = $client->request( 'GET', $path,
+        // dd($path);
+        $response = $client->request( 'GET', $base_url . $path,
             [
                 'allow_redirects' => true,
                 'headers'         => $headers,
+                'verify'          => false,
                 //'form_params'     => $form_params,
             ] );
         $response_body = (string) $response->getBody();
-        echo $response_body;
+        // dd($response_body);
+        // echo $response_body;
+        echo json_encode($response_body, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
     }
 
 }
