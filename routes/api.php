@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/get_slack_user', 'SampleController@getUserList');
 Route::post('/post_slack_channel', 'sampleController@postChannel');
 Route::get('/g_get_slack_user', 'SampleController@with_headers');
+Route::get('/g_get_slack_history', 'SampleController@getChannelHistory');
