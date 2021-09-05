@@ -95,8 +95,6 @@ class SampleController extends Controller
         }
      
         $base = "https://slack.com/api/users.list";
-        //下記トークンはクエリパラメタに追加するもの。最新のAPIでは使用不可
-        //$param = "?token=${accessToken}";
 
         // $url = $base . $param;
         $url = $base;
